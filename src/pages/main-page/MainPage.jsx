@@ -1,40 +1,51 @@
 import './MainPage.css';
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import CardMovie from '../../components/card-movie/CardMovie';
+import Header from '../../components/header/Header';
 
 function MainPage() {
-    let title = '';
-    let db = []
-    let data = (search) => {
-        search = encodeURIComponent(search);
-        console.log(typeof (search))
-        let url = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e&s=${search}`;
-        fetch(url)
-            .then(response => {
-                console.log(response)
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Data received:', data);
-                db = data.Search;
-                //  return data;
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-            return db
-    }
-    console.log(db)
+    // let [movies, setMovies] = useState([]);
+
+    // let data = async (search) => {
+    //     search = encodeURIComponent(search);
+    //     let url = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e&s=${search}`;
+
+    //     await fetch(url)
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(data => {
+    //             console.log('Data received:', data);
+    //             setMovies(data.Search);
+    //         })
+    //         .catch(error => {
+    //             console.error('There was a problem with the fetch operation:', error);
+    //         });
+    // };
+
+    // useEffect(() => {
+    //     data();
+    // }, []);
+
+    // let list = movies.map((elem) => {
+    //     return (
+    //         <>
+    //             <CardMovie
+    //                 title={elem.Title}
+    //                 year={elem.Year}
+    //                 poster={elem.Poster}
+    //             />
+    //         </>
+
+    //     )
+    // });
     return (
         <>
-            {/* {data("year")} */}
-            <input type="text"
-                placeholder='Введите название фильма...'
-                onBlur={(evt) => data(evt.target.value)} />
-            <p>{title}</p>
+        <Header/>
+            {/* <section>{list}</section> */}
         </>
     );
 }
