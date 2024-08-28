@@ -1,11 +1,9 @@
-import './MainPage.css';
 import React, { useState, useEffect } from 'react';
-import CardMovie from '../../components/card-movie/CardMovie';
 import Header from '../../components/header/Header';
 
 function MainPage() {
-    // let [movies, setMovies] = useState([]);
-
+    // let [movies, setMovies] = useState("");
+    // console.log(movies);
     // let data = async (search) => {
     //     search = encodeURIComponent(search);
     //     let url = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e&s=${search}`;
@@ -44,8 +42,8 @@ function MainPage() {
     // });
     return (
         <>
-        <Header/>
-            {/* <section>{list}</section> */}
+            <Header />
+           {/* <section>{list}</section> */}
         </>
     );
 }
