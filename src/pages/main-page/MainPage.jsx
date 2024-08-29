@@ -1,49 +1,48 @@
+import styles from './MainPage.module.css';
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/header/Header.jsx';
+import Main from '../../components/main/Main'
+import getDataAPI from '../../utils/getDataAPI';
 
 function MainPage() {
-    // let [movies, setMovies] = useState("");
-    // console.log(movies);
-    // let data = async (search) => {
-    //     search = encodeURIComponent(search);
-    //     let url = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e&s=${search}`;
+    let [movies, setMovies] = useState([]); // Получаемые фильмы
+    let [stringSearch, setStringSearch] = useState(''); // Вводимая строка в поиске
+    let [errorNetwork, setErrorNetwork] = useState(false); // Состояние сетевых ошибок
+    // Загрузка страницы
+    useEffect(() => {
+        getDataAPI();
+    }, []);
 
-    //     await fetch(url)
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             console.log('Data received:', data);
-    //             setMovies(data.Search);
-    //         })
-    //         .catch(error => {
-    //             console.error('There was a problem with the fetch operation:', error);
-    //         });
-    // };
+    // Проверка нажатия клавиши Enter
+    let handleEnter = (evt) => {
+        if (evt.key === 'Enter') {
+            let mov = getDataAPI(stringSearch);
 
-    // useEffect(() => {
-    //     data();
-    // }, []);
+            console.log(mov)
+        }
+    }
 
-    // let list = movies.map((elem) => {
-    //     return (
-    //         <>
-    //             <CardMovie
-    //                 title={elem.Title}
-    //                 year={elem.Year}
-    //                 poster={elem.Poster}
-    //             />
-    //         </>
-
-    //     )
-    // });
     return (
         <>
-            <Header />
-           {/* <section>{list}</section> */}
+            <header>
+                <div className="wrapper">
+                    <section className={styles.header}>
+                        <h1 className={styles.title}>Movie Search</h1>
+                        <div className={styles.searchBlock}>
+                            <input type="text"
+                                className={styles.searchInput}
+                                placeholder='Введите название фильма...'
+                                onChange={(evt) => setStringSearch(evt.target.value)}
+                                onKeyUp={(evt) => (handleEnter(evt))}
+                            />
+                            <button className={styles.searchBtn}
+                                onClick={() => getDataAPI(stringSearch)}
+                            ></button>
+                        </div>
+                    </section>
+                </div>
+            </header>
+            <Main movies={movies}
+                error={errorNetwork} />
         </>
     );
 }
