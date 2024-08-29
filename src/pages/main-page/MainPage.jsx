@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/header/Header';
+import Header from '../../components/header/Header.jsx';
 
 function MainPage() {
     // let [movies, setMovies] = useState("");

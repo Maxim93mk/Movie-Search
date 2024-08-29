@@ -1,14 +1,21 @@
 import React from "react";
-import './CardMovie.css';
+import styles from './CardMovie.module.css';
 
 function CardMovie(props) {
-    console.log(props)
-    let list = props.movies.map((elem) => {
-        return <div className="card">
-            <img src={elem.Poster} alt={elem.Title} />
-            <p>{elem.Title}</p>
-            <p>{elem.Year}</p>
-        </div>
+    let list = props.movies.map((elem, index) => {
+        return <>
+            <div className={styles.card} key={index}>
+                <div className={styles.blockImg}>
+                    <img src={elem.Poster} alt={elem.Title} className={styles.cardImg} />
+                </div>
+                <div className={styles.blockDescr}>
+                     <p className={styles.title}>{elem.Title}</p>
+                <p className={styles.year}>{elem.Year}</p>
+                </div>
+               
+            </div>
+        </>
+
     });
 
     return (

@@ -4,10 +4,10 @@ import Main from '../main/Main';
 
 function Header() {
   let [movies, setMovies] = useState([]);
-    let data = async (search) => {
+    let getDataAPI = async (search) => {
         search = encodeURIComponent(search);
         console.log(search)
-        if(search==='undefind'|| search==""){
+        if(search==='undefind'|| search ===""){
             search = undefined;
         }
         let url = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e&s=${search}`;
@@ -24,12 +24,13 @@ function Header() {
                 setMovies(data.Search);
             })
             .catch(error => {
+                console.log(error)
                 console.error('There was a problem with the fetch operation:', error);
             });
     };
 
     useEffect(() => {
-        data();
+        getDataAPI();
     }, []);
    
     return (
@@ -44,7 +45,7 @@ function Header() {
                             <input type="text"
                                 className={styles.searchInput}
                                 placeholder='Введите название фильма...'
-                                onBlur={(evt) => data(evt.target.value)} />
+                                onBlur={(evt) => getDataAPI(evt.target.value)} />
                             <button className={styles.searchBtn}></button>
                         </div>
                     </section>
