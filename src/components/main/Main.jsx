@@ -7,7 +7,7 @@ function Main(props){
             <main>
                 <div className="wrapper">
                     <section className={styles.main}>
-                        <CardMovie movies = {props.movies}/>
+                        <CardMovie movies = {props.movies} error={props.error}/>
                     </section>
                 </div>
             </main>
