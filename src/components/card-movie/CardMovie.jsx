@@ -9,10 +9,10 @@ function CardMovie(props) {
                     <img src={elem.Poster} alt={elem.Title} className={styles.cardImg} />
                 </div>
                 <div className={styles.blockDescr}>
-                     <p className={styles.title}>{elem.Title}</p>
-                <p className={styles.year}>{elem.Year}</p>
+                    <p className={styles.title}>{elem.Title}</p>
+                    <p className={styles.year}>Year: {elem.Year}</p>
                 </div>
-               
+
             </div>
         </>
 

@@ -2,9 +2,7 @@
     background-color: #888888;
     min-height: 100vh;
     padding: 30px 80px;
-    display: flex;
-    align-items: center;
-    /* justify-content: flex-start; */
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 30px;
 }
