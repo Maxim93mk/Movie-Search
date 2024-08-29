@@ -2,7 +2,6 @@ import React from "react";
 import styles from './CardMovie.module.css';
 
 function CardMovie(props) {
-    console.log(props.error)
     let list = '';
     if (!props.error) {
         list = props.movies.map((elem, index) => {
