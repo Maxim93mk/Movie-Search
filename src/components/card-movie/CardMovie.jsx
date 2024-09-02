@@ -3,7 +3,7 @@ import styles from './CardMovie.module.css';
 
 function CardMovie(props) {
     let list = '';
-    if (!props.error) {
+    // if (!props.error) {
         list = props.movies.map((elem, index) => {
             return <>
                 <div className={styles.card} key={index}>
@@ -19,12 +19,12 @@ function CardMovie(props) {
             </>
 
         });
-    }
-    else {
-        return <>
-            <div className={styles.card}>ХУЙ</div>
-        </>
-    }
+    // }
+    // else {
+    //     return <>
+    //         <div className={styles.card}>ХУЙ</div>
+    //     </>
+    // }
 
 
     return (

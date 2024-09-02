@@ -1,32 +1,37 @@
+import React from "react";
+import { useState } from "react";
+
 
 // Функция для получения данных с API
-let getDataAPI = async (search) => {
-    let errorNetwork = false;
-    search = encodeURIComponent(search);
-    console.log(search)
+const useGetMovies = () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const apiUrl = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e`;
 
-    if (search === 'undefind' || search === "") {
-        search = undefined;
-    }
-    let url = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e&s=${search}`;
+    const fetchData = async (query = 'The Man in Black') => {
+        setIsLoading(true);
+        await fetch(apiUrl + (query ? `&s=${query}` : 'The Man in Black'))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setError(null);
+                setMovies(data.Search || []);
+            })
+            .catch(error => {
+                setError(error);
+                console.error('There was a problem with the fetch operation:', error);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    };
 
-    await fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
+    return {isLoading, movies, error, fetchData}
+}
 
-        })
-        .then(data => {
-            errorNetwork = false;
-            console.log('Data received:', data);
-            return data.Search;
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-           return  errorNetwork = true;
-        });
-};
-
-export default getDataAPI;
+export default useGetMovies;
