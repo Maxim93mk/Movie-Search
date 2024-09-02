@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     padding: 30px 20px;
     gap: 10px;
-    border-bottom: 1px solid rgba(0,0,0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .title {
@@ -52,4 +52,13 @@
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+.main {
+    background-color: #888888;
+    min-height: 100vh;
+    padding: 30px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
 }

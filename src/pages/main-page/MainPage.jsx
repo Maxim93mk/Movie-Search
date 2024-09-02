@@ -1,26 +1,23 @@
 import styles from './MainPage.module.css';
 import React, { useState, useEffect } from 'react';
-import Main from '../../components/main/Main'
-import getDataAPI from '../../utils/getDataAPI';
+import useGetMovies from '../../utils/getDataAPI';
+import CardList from '../../components/card-list/CardList';
 
 function MainPage() {
-    let [movies, setMovies] = useState([]); // Получаемые фильмы
-    let [stringSearch, setStringSearch] = useState(''); // Вводимая строка в поиске
-    let [errorNetwork, setErrorNetwork] = useState(false); // Состояние сетевых ошибок
+    const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
+    const {movies, error, fetchData} = useGetMovies(); 
+
     // Загрузка страницы
     useEffect(() => {
-        getDataAPI();
+       fetchData();
     }, []);
 
     // Проверка нажатия клавиши Enter
-    let handleEnter = (evt) => {
+    const  handleEnter =  (evt) => {
         if (evt.key === 'Enter') {
-            let mov = getDataAPI(stringSearch);
-
-            console.log(mov)
+         fetchData(stringSearch);
         }
     }
-
     return (
         <>
             <header>
@@ -35,14 +32,19 @@ function MainPage() {
                                 onKeyUp={(evt) => (handleEnter(evt))}
                             />
                             <button className={styles.searchBtn}
-                                onClick={() => getDataAPI(stringSearch)}
+                                onClick={() => fetchData(stringSearch)}
                             ></button>
                         </div>
                     </section>
                 </div>
             </header>
-            <Main movies={movies}
-                error={errorNetwork} />
+            <main>
+                <div className="wrapper">
+                    <section className={styles.main}>
+                        <CardList movies = {movies} error={error}/>
+                    </section>
+                </div>
+            </main>
         </>
     );
 }
