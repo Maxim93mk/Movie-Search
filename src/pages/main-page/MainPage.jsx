@@ -1,7 +1,7 @@
 import styles from './MainPage.module.css';
 import React, { useState, useEffect } from 'react';
 import useGetMovies from '../../utils/getDataAPI';
-import CardMovie from '../../components/card-movie/CardMovie';
+import CardList from '../../components/card-list/CardList';
 
 function MainPage() {
     const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
@@ -18,7 +18,6 @@ function MainPage() {
          fetchData(stringSearch);
         }
     }
-
     return (
         <>
             <header>
@@ -42,7 +41,7 @@ function MainPage() {
             <main>
                 <div className="wrapper">
                     <section className={styles.main}>
-                        <CardMovie movies = {movies} error={error}/>
+                        <CardList movies = {movies} error={error}/>
                     </section>
                 </div>
             </main>

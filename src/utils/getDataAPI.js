@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 
 
@@ -6,12 +5,12 @@ import { useState } from "react";
 const useGetMovies = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [movies, setMovies] = useState([]);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
     const apiUrl = `http://www.omdbapi.com/?i=tt3896198&apikey=126a658e`;
 
-    const fetchData = async (query = 'The Man in Black') => {
+    const fetchData = async (query = 'Dracula') => {
         setIsLoading(true);
-        await fetch(apiUrl + (query ? `&s=${query}` : 'The Man in Black'))
+        await fetch(apiUrl + (query ? `&s=${query}` : '&s=Dracula'))
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -19,11 +18,11 @@ const useGetMovies = () => {
                 return response.json();
             })
             .then(data => {
-                setError(null);
+                setError(false);
                 setMovies(data.Search || []);
             })
             .catch(error => {
-                setError(error);
+                setError(true);
                 console.error('There was a problem with the fetch operation:', error);
             })
             .finally(() => {
