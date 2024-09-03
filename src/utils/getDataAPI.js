@@ -18,6 +18,7 @@ const useGetMovies = () => {
                 return response.json();
             })
             .then(data => {
+                console.log(data)
                 setError(false);
                 setMovies(data.Search || []);
             })

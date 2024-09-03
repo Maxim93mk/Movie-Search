@@ -8,8 +8,9 @@ function CardList(props) {
         return <NotFound />
     }
     else {
-        let cardMovies = props.movies.map((elem, index) => {
-            return <CardMovie key={index}
+        let cardMovies = props.movies.map((elem) => {
+            return <CardMovie key={elem.imdbID}
+                Id = {elem.imdbID}
                 Title={elem.Title}
                 Poster={elem.Poster}
                 Year={elem.Year} />
