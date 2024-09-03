@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from './Header.module.css';
 
 function Header(props) {
-
     const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
     const param = 's';
 
