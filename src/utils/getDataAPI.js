@@ -30,7 +30,7 @@ const useGetMovies = () => {
             });
     };
 
-    return {isLoading, movies, error, fetchData}
+    return { isLoading, movies, error, fetchData }
 }
 
 export default useGetMovies;

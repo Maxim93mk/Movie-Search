@@ -2,6 +2,7 @@ import styles from './MainPage.module.css';
 import React, { useState, useEffect } from 'react';
 import useGetMovies from '../../utils/getDataAPI';
 import CardList from '../../components/card-list/CardList';
+import MoviePage from '../movie-page/MoviePage';
 
 function MainPage() {
     const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
@@ -18,6 +19,7 @@ function MainPage() {
             fetchData(stringSearch, param);
         }
     }
+    
     return (
         <>
             <header>
@@ -42,6 +44,7 @@ function MainPage() {
                 <div className="wrapper">
                     <section className={styles.main}>
                         <CardList movies={movies} error={error} />
+                        <MoviePage/>
                     </section>
                 </div>
             </main>
