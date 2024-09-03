@@ -5,17 +5,17 @@ import CardList from '../../components/card-list/CardList';
 
 function MainPage() {
     const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
-    const {movies, error, fetchData} = useGetMovies(); 
-
+    const { movies, error, fetchData } = useGetMovies();
+    const param = 's';
     // Загрузка страницы
     useEffect(() => {
-       fetchData();
+        fetchData();
     }, []);
 
     // Проверка нажатия клавиши Enter
-    const  handleEnter =  (evt) => {
+    const handleEnter = (evt) => {
         if (evt.key === 'Enter') {
-         fetchData(stringSearch);
+            fetchData(stringSearch, param);
         }
     }
     return (
@@ -32,7 +32,7 @@ function MainPage() {
                                 onKeyUp={(evt) => (handleEnter(evt))}
                             />
                             <button className={styles.searchBtn}
-                                onClick={() => fetchData(stringSearch)}
+                                onClick={() => fetchData(stringSearch, param)}
                             ></button>
                         </div>
                     </section>
@@ -41,7 +41,7 @@ function MainPage() {
             <main>
                 <div className="wrapper">
                     <section className={styles.main}>
-                        <CardList movies = {movies} error={error}/>
+                        <CardList movies={movies} error={error} />
                     </section>
                 </div>
             </main>
