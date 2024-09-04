@@ -4,12 +4,12 @@ import NotFound from "../not-found/NotFound";
 import styles from './CardList.module.css';
 
 function CardList(props) {
-
     if (props.error) {
         return (
             <>
                 <section className={styles.NotFound}>
-                    <NotFound />
+                    <NotFound TitleMsg={'404'}
+                        DescrMsg={'Not Found'} />
                 </section>
             </>
         )
@@ -17,7 +17,14 @@ function CardList(props) {
     }
     else {
         if (props.movies.length === 0) {
-            return <p>No results</p> // Стилизовать компонент, сделать в компоненте not found
+            return (
+                <>
+                    <section className={styles.NotFound}>
+                        <NotFound TitleMsg={'Oops...'}
+                            DescrMsg={'There Are No Search Results...'} />
+                    </section>
+                </>
+            )
         }
         else {
             let cardMovies = props.movies.map((elem) => {
