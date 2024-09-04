@@ -16,7 +16,7 @@ function CardList(props) {
 
     }
     else {
-        if (props.movies.length === 0) {
+         if (props.movies.length===0 || props.movies.Response==='False') {
             return (
                 <>
                     <section className={styles.NotFound}>
@@ -27,7 +27,7 @@ function CardList(props) {
             )
         }
         else {
-            let cardMovies = props.movies.map((elem) => {
+            let cardMovies = props.movies.Search.map((elem) => {
                 return <CardMovie key={elem.imdbID}
                     Id={elem.imdbID}
                     Title={elem.Title}

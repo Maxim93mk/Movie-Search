@@ -3,15 +3,20 @@ import styles from './Header.module.css';
 
 function Header(props) {
     const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
-    const param = 's';
-
+    const param = '?s=';
+    let query = '';
     // Проверка нажатия клавиши Enter
     const handleEnter = (evt) => {
         if (evt.key === 'Enter') {
-            props.fetchData(stringSearch, param);
+            props.fetchData(query);
         }
     }
-
+    if(stringSearch===''){
+        query = stringSearch;
+    }
+    else{
+        query = param + stringSearch
+    }
     return (
         <>
             <header>
@@ -26,7 +31,7 @@ function Header(props) {
                                 onKeyUp={(evt) => (handleEnter(evt))}
                             />
                             <button className={styles.searchBtn}
-                                onClick={() => props.fetchData(stringSearch, param)}
+                                onClick={() => props.fetchData(query)}
                             ></button>
                         </div>
                     </section>
