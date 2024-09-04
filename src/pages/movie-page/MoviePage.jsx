@@ -2,18 +2,23 @@ import React from "react";
 import style from './MoviePage.module.css';
 import { useState, useEffect } from "react";
 import useGetMovies from '../../utils/getDataAPI';
+import { useLocation } from 'react-router-dom';
 
 function MoviePage() {
-    const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
+    const location = useLocation();
+    const [iDMovie] = useState(location.state.Id);
     const { movies, error, fetchData } = useGetMovies();
-
+    const param = '?i=';
+    let query = param + iDMovie;
+    console.log(query);
+    
     // setStringSearch('Matrix');
     useEffect(() => {
-        fetchData("Dracula", 't');
+        fetchData(query);
     }, []);
 
     console.log(movies)
-
+/// Вынести в карточку прокинуть пропсами подумать как обработать исключения
     return (
         <>
             <div className={style.MovieBlock}>
