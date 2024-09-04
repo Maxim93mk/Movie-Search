@@ -53,12 +53,3 @@
     border: none;
     cursor: pointer;
 }
-
-.main {
-    background-color: #888888;
-    min-height: 100vh;
-    padding: 30px 80px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 30px;
-}
