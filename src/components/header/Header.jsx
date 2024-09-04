@@ -11,7 +11,7 @@ function Header(props) {
             props.fetchData(stringSearch, param);
         }
     }
-    console.log(props.fetchData)
+
     return (
         <>
             <header>

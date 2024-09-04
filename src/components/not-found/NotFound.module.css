@@ -1,8 +1,10 @@
-.title{
- color: #ffffff;
- font-size: 100px;
+.title {
+    color: #ffffff;
+    font-size: 200px;
+    text-align: center;
 }
 
-.descr{
-    font-size: 50px;
+.descr {
+    font-size: 100px;
+    text-align: center;
 }

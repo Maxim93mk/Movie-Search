@@ -6,7 +6,14 @@ import styles from './CardList.module.css';
 function CardList(props) {
 
     if (props.error) {
-        return <NotFound />
+        return (
+            <>
+                <section className={styles.NotFound}>
+                    <NotFound />
+                </section>
+            </>
+        )
+
     }
     else {
         if (props.movies.length === 0) {
@@ -23,10 +30,10 @@ function CardList(props) {
 
             return (
                 <>
-                 <section className={styles.main}>
-                    {cardMovies}
-                 </section>
-                    
+                    <section className={styles.main}>
+                        {cardMovies}
+                    </section>
+
                 </>
             );
         }
