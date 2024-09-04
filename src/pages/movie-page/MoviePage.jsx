@@ -1,8 +1,11 @@
 import React from "react";
-import style from './MoviePage.module.css';
+import styles from './MoviePage.module.css';
 import { useState, useEffect } from "react";
 import useGetMovies from '../../utils/getDataAPI';
 import { useLocation } from 'react-router-dom';
+import Header from '../../components/header/Header';
+import MovieDescr from "../../components/movie-descr/MovieDescr";
+import NotFound from "../../components/not-found/NotFound";
 
 function MoviePage() {
     const location = useLocation();
@@ -10,32 +13,40 @@ function MoviePage() {
     const { movies, error, fetchData } = useGetMovies();
     const param = '?i=';
     let query = param + iDMovie;
-    console.log(query);
-    
-    // setStringSearch('Matrix');
+
     useEffect(() => {
         fetchData(query);
     }, []);
 
-    console.log(movies)
-/// Вынести в карточку прокинуть пропсами подумать как обработать исключения
-    return (
-        <>
-            <div className={style.MovieBlock}>
-                <div className={style.left}>
-                    <img src={movies.Poster} alt={movies.Title} />
-                </div>
-                <div className={style.right}>
-                    <h1 className={style.title}>{movies.Title}</h1>
-                    <p className={style.descr}><span className={style.span}>Description:</span> {movies.Plot}</p>
-                    <p className={style.year}><span className={style.span}>Year:</span> {movies.Year}</p>
-                    <p className={style.genre}><span className={style.span}>Genre:</span> {movies.Genre}</p>
-                    <p className={style.director}><span className={style.span}>Director:</span> {movies.Director}</p>
-                    <p className={style.actors}><span className={style.span}>Actors:</span> {movies.Actors}</p>
-                </div>
-            </div>
-        </>
-    );
+    if (error) {
+        return (
+            <>
+                <section className={styles.NotFound}>
+                    <NotFound TitleMsg={'404'}
+                        DescrMsg={'Not Found'} />
+                </section>
+            </>
+        );
+
+    }
+    else {
+        return (
+            <>
+                <Header />
+                <main>
+
+                    <div className="wrapper">
+                        <section className={styles.main}>
+                            <MovieDescr movies={movies} />
+                        </section>
+                    </div>
+
+                </main>
+
+            </>
+        );
+    }
+
 }
 
 export default MoviePage;
