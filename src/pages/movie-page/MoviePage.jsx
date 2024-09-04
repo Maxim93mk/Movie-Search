@@ -31,8 +31,9 @@ function MoviePage() {
     }
     else {
         return (
+            
             <>
-                <Header />
+                <Header fetchData={()=>fetchData()} />
                 <main>
 
                     <div className="wrapper">
