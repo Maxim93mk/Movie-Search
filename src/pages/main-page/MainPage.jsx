@@ -4,26 +4,33 @@ import CardList from '../../components/card-list/CardList';
 import MoviePage from '../movie-page/MoviePage';
 import Header from '../../components/header/Header';
 import MovieDescr from '../../components/movie-descr/MovieDescr';
+import styles from './MainPage.module.css';
+
 
 function MainPage() {
     const { movies, error, fetchData } = useGetMovies();
     const [getFlagComponent, setFlagComponent] = useState(false);
-    
-    
-    const getComponent = () =>{
-        if(!getFlagComponent){
-            return <CardList movies={movies} error={error} setFlagComponent={setFlagComponent} />;
+    const [getIdMovie, setIdMovie] = useState('')
+
+    const getComponent = () => {
+        if (!getFlagComponent) {
+            return <CardList movies={movies}
+                error={error}
+                setFlagComponent={setFlagComponent}
+                setIdMovie={setIdMovie} />;
         }
-        else{
-            return <MovieDescr />;
+        else {
+            return (
+                <>
+                    <section className={styles.MovieDescr}>
+                        <MovieDescr getIdMovie={getIdMovie} />;
+                    </section>
+
+                </>
+            );
+
         }
     }
-    
-    
-    // const component = !getFlagComponent ?
-        
-    //     :
-        
 
     return (
         <>

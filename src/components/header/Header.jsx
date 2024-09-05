@@ -32,7 +32,8 @@ function Header(props) {
             <header>
                 <div className="wrapper">
                     <section className={styles.header}>
-                        <h1 className={styles.title}>Movie Search</h1>
+                        <h1 className={styles.title}
+                            onClick={() => sendSearchQuery()}>Movie Search</h1>
                         <div className={styles.searchBlock}>
                             <input type="text"
                                 className={styles.searchInput}
