@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useGetMovies from '../../utils/getDataAPI';
 import CardList from '../../components/card-list/CardList';
-import MoviePage from '../movie-page/MoviePage';
 import Header from '../../components/header/Header';
 import MovieDescr from '../../components/movie-descr/MovieDescr';
 import styles from './MainPage.module.css';
