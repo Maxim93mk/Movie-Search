@@ -8,9 +8,9 @@ const useGetMovies = () => {
     const [error, setError] = useState(false);
     const apiUrl = `http://www.omdbapi.com/`;
     const apiKey = '&apikey=126a658e';
-    const fetchData = async (query = '?s=Dracula') => {
+    const fetchData = async (query = '?s=Shaman King') => {
         setIsLoading(true);
-        await fetch(apiUrl + (query ? `${query}` : '?s=Dracula')+apiKey)
+        await fetch(apiUrl + (query ? `${query}` : '?s=Shaman King')+apiKey)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

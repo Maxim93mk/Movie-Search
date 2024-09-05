@@ -5,11 +5,3 @@
     justify-items: center;
     padding-top: 50px;
 }
-
-.NotFound{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-}
