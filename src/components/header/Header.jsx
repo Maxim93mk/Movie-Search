@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './Header.module.css';
 
 function Header(props) {
     const [stringSearch, setStringSearch] = useState(''); // Значение поисковой строки
     const param = '?s=';
-    let query = '';
-    // Проверка нажатия клавиши Enter
-    const handleEnter = (evt) => {
-        if (evt.key === 'Enter') {
-            props.fetchData(query);
+
+    // Загрузка страницы
+    useEffect(() => {
+        props.fetchData();
+    }, []);
+
+
+    // Формирование строки для запроса
+    const setSearchQuery = (str) => {
+        if (str !== '') {
+            setStringSearch(param + str)
+        }
+        else {
+            setStringSearch(str);
         }
     }
-    if(stringSearch===''){
-        query = stringSearch;
+
+    // Отправка на запрос фильма из поисковой строки
+    const sendSearchQuery = () => {
+        props.fetchData(stringSearch);
+        props.setFlagComponent(false);
     }
-    else{
-        query = param + stringSearch
-    }
+
     return (
         <>
             <header>
                 <div className="wrapper">
                     <section className={styles.header}>
-                        <h1 className={styles.title}>Movie Search</h1>
+                        <h1 className={styles.title}
+                            onClick={() => sendSearchQuery()}>Movie Search</h1>
                         <div className={styles.searchBlock}>
                             <input type="text"
                                 className={styles.searchInput}
                                 placeholder='Введите название фильма...'
-                                onChange={(evt) => setStringSearch(evt.target.value)}
-                                onKeyUp={(evt) => (handleEnter(evt))}
+                                onChange={(evt) => setSearchQuery(evt.target.value)}
+                                onKeyUp={(evt) => evt.key === 'Enter' ? sendSearchQuery() : ''}
                             />
                             <button className={styles.searchBtn}
-                                onClick={() => props.fetchData(query)}
+                                onClick={() => sendSearchQuery()}
                             ></button>
                         </div>
                     </section>

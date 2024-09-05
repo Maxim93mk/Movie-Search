@@ -4,6 +4,9 @@ import NotFound from "../not-found/NotFound";
 import styles from './CardList.module.css';
 
 function CardList(props) {
+    const setFlagComponent=props.setFlagComponent;
+    const setIdMovie=props.setIdMovie;
+    
     if (props.error) {
         return (
             <>
@@ -29,10 +32,12 @@ function CardList(props) {
         else {
             let cardMovies = props.movies.Search.map((elem) => {
                 return <CardMovie key={elem.imdbID}
-                    Id={elem.imdbID}
-                    Title={elem.Title}
-                    Poster={elem.Poster}
-                    Year={elem.Year} />
+                                  Id={elem.imdbID}
+                                  Title={elem.Title}
+                                  Poster={elem.Poster}
+                                  Year={elem.Year} 
+                                  setFlagComponent={setFlagComponent}
+                                  setIdMovie={setIdMovie} />
             });
 
             return (

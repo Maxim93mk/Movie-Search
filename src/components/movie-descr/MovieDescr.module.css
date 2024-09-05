@@ -1,5 +1,5 @@
-.MovieBlock{
-    display:  flex;
+.MovieBlock {
+    display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 30px;
@@ -10,7 +10,7 @@
     height: 100%;
 }
 
-.left{
+.left {
     max-width: 300px;
     min-width: 300px;
     max-height: 425px;
@@ -19,7 +19,7 @@
     height: 100%;
 }
 
-.right{
+.right {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -32,10 +32,10 @@
     font-size: 20px;
 }
 
-.title{
+.title {
     font-size: 60px;
 }
 
-.span{
+.span {
     font-weight: 700;
 }
