@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useGetMovies from '../../utils/getDataAPI';
 import CardList from '../../components/card-list/CardList';
 import Header from '../../components/header/Header';

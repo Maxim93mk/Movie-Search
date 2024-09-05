@@ -1,6 +1,5 @@
 import React from "react";
 import CardMovie from '..//card-movie/CardMovie';
-import NotFound from "../not-found/NotFound";
 import styles from './CardList.module.css';
 
 function CardList(props) {
