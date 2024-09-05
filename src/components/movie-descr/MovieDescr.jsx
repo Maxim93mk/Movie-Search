@@ -4,7 +4,8 @@ import styles from './MovieDescr.module.css';
 function MovieDescr(props) {
     return (
         <>
-            <div className={styles.MovieBlock}>
+        <div>eplelfr;el</div>
+            {/* <div className={styles.MovieBlock}>
                 <div className={styles.left}>
                     <img src={props.movies.Poster} alt={props.movies.Title} />
                 </div>
@@ -16,7 +17,7 @@ function MovieDescr(props) {
                     <p className={styles.director}><span className={styles.span}>Director:</span> {props.movies.Director}</p>
                     <p className={styles.actors}><span className={styles.span}>Actors:</span> {props.movies.Actors}</p>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }

@@ -27,12 +27,14 @@ function CardList(props) {
             )
         }
         else {
+            const setFlagComponent=props.setFlagComponent;
             let cardMovies = props.movies.Search.map((elem) => {
                 return <CardMovie key={elem.imdbID}
                     Id={elem.imdbID}
                     Title={elem.Title}
                     Poster={elem.Poster}
-                    Year={elem.Year} />
+                    Year={elem.Year} 
+                    setFlagComponent={setFlagComponent}/>
             });
 
             return (

@@ -8,14 +8,25 @@ function CardMovie(props) {
     const Id = props.Id
     const navigate = useNavigate();
 
-    const redirectMoviePage = () => {
-        return navigate('/movie', { state: { Id } });
+
+    const [iDMovie] = useState(Id);
+    const { movies, error, fetchData } = useGetMovies();
+    const param = '?i=';
+    let query = param + iDMovie;
+
+
+    // const redirectMoviePage = () => {
+    //     fetchData(query)
+    //     return navigate('/movie', { state: { movies, error } });
+    // }
+    function test(){
+        props.setFlagComponent(true);
     }
 
     return (
         <>
             <div className={styles.card}
-                onClick={redirectMoviePage}>
+                onClick={test}>
                 <div className={styles.blockImg}>
                     <img src={props.Poster} alt={props.Title} className={styles.cardImg} />
                 </div>

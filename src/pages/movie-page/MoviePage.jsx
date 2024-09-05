@@ -9,16 +9,17 @@ import NotFound from "../../components/not-found/NotFound";
 
 function MoviePage() {
     const location = useLocation();
-    const [iDMovie] = useState(location.state.Id);
-    const { movies, error, fetchData } = useGetMovies();
-    const param = '?i=';
-    let query = param + iDMovie;
+    const [moviesx] = useState(location.state.movies);
+    const [errox] = useState(location.state.error);
+     const { movies, error, fetchData } = useGetMovies();
+    // const param = '?i=';
+    // let query = param + iDMovie;
 
     useEffect(() => {
-        fetchData(query);
+        fetchData();
     }, []);
 
-    if (error) {
+    if (errox) {
         return (
             <>
                 <section className={styles.NotFound}>
@@ -33,12 +34,12 @@ function MoviePage() {
         return (
             
             <>
-                <Header fetchData={()=>fetchData()} />
+                <Header fetchData={fetchData} />
                 <main>
 
                     <div className="wrapper">
                         <section className={styles.main}>
-                            <MovieDescr movies={movies} />
+                            <MovieDescr movies={moviesx} />
                         </section>
                     </div>
 
