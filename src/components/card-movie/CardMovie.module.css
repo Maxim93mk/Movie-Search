@@ -28,16 +28,17 @@
     max-width: 300px;
     min-width: 300px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 500px;
+    min-height: 500px;
+    height: 100%;
+
 }
 
 .cardImg {
     border-radius: 15px;
-    max-width: 400px;
-    max-width: 400px;
-    width: 100%;
-    max-height: 500px;
-    min-height: 500px;
-    height: 100%;
 }
 
 .title {
