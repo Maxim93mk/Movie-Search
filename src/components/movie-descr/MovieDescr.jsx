@@ -3,22 +3,26 @@ import styles from './MovieDescr.module.css';
 import useGetMovies from '../../utils/getDataAPI';
 
 function MovieDescr(props) {
-    const { movies, error, fetchData } = useGetMovies();
+    const { movies, fetchData } = useGetMovies();
     const paramQuery = '?i=' + props.getIdMovie;
-
-    console.log(paramQuery);
 
     useEffect(() => {
         fetchData(paramQuery);
     }, []);
 
+    const getPoster = () => {
+        if (movies.Poster !== 'N/A') {
+            return <img src={movies.Poster} alt={movies.Title} />
+        }
+        else {
+            return <img src="/assets/img/no-poster.png" alt="no-poster" />
+        }
+    }
 
     return (
         <>
             <div className={styles.MovieBlock}>
-                <div className={styles.left}>
-                    <img src={movies.Poster} alt={movies.Title} />
-                </div>
+                <div className={styles.left}>{getPoster()}</div>
                 <div className={styles.right}>
                     <h1 className={styles.title}>{movies.Title}</h1>
                     <p className={styles.descr}><span className={styles.span}>Description:</span> {movies.Plot}</p>
