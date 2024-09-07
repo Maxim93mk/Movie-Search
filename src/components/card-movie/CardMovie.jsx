@@ -13,7 +13,7 @@ function CardMovie(props) {
             return <img src={props.Poster} alt={props.Title} className={styles.cardImg} />
         }
         else {
-            return <img src="/assets/img/no-poster.png" alt="no-poster" />
+            return <img src="/assets/img/no_poster.png" alt="no-poster" />
         }
     }
 

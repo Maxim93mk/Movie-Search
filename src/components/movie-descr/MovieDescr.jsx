@@ -15,7 +15,7 @@ function MovieDescr(props) {
             return <img src={movies.Poster} alt={movies.Title} />
         }
         else {
-            return <img src="/assets/img/no-poster.png" alt="no-poster" />
+            return <img src="/assets/img/no_poster.png" alt="no-poster" />
         }
     }
 
